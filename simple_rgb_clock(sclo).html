@@ -1,0 +1,67 @@
+<html>
+<head >
+<title>sclo</title>
+<style>
+.c {
+        color: green;
+        font-weight: bold;
+}
+#s1 {
+        color: red;
+        font-weight: bold;
+}
+#s2 {
+        color: blue;
+        font-weight: bold;
+}
+p {
+        font-size: 54px;
+}
+</style>
+</head>
+<body>
+<p><span id="h" class="c">nan</span><span id="s1">:</span><span id="m" class="c">nan</span><span id="s2">:</span><span id="s" class="c">nan</span></p>
+<script>
+const th = document.getElementById('h');
+const tm = document.getElementById('m');
+const ts = document.getElementById('s');
+const s1 = document.getElementById('s1');
+const s2 = document.getElementById('s2');
+function zerolize(i) {
+        if (i < 10) {i = "0" + i};
+        return i;
+}
+function updateTime() {
+        const date = new Date();
+        const h = date.getHours();
+        let m = date.getMinutes();
+        let s = date.getSeconds();
+        m = zerolize(m);
+        s = zerolize(s);
+        th.innerHTML = h;
+        tm.innerHTML = m;
+        ts.innerHTML = s;
+}
+function chgCl() {
+        if (getComputedStyle(s1).getPropertyValue('color') === "rgb(255, 0, 0)")
+        {
+            s1.style.setProperty('color', 'blue');
+        }
+        else
+        {
+            s1.style.setProperty('color', 'red');
+        }
+        if (getComputedStyle(s2).getPropertyValue('color') === "rgb(0, 0, 255)")
+         {
+            s2.style.setProperty('color', 'red');
+         }
+        else
+         {
+            s2.style.setProperty('color', 'blue');
+         }
+}
+const cc = setInterval(chgCl, 1000);
+const sI = setInterval(updateTime, 500);
+</script>
+</body>
+</html>
